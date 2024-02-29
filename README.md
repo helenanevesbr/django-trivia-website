@@ -9,8 +9,8 @@ A Trivia website for users to test their knowledge on Django framework. Built wi
 Check out the live version of the trivia website here: [Trivia Website](https://trivia-ariannedee.pythonanywhere.com/)
 
 ## Technologies
-- **Backend Framework**: Django 4.2
-- **Programming Language**: Python 3.11
+- **Backend Framework**: Django 5.0.2
+- **Programming Language**: Python 3.10.12
 - **Database**: SQLite
 - **Frontend**: HTML, CSS, JavaScript (Django Templates)
 
