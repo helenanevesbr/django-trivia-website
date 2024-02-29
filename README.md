@@ -27,7 +27,7 @@ cd trivia-website
 For Unix/macOS:
 ```bash
 python3 -m venv env
-source env/bin/activate
+source venv/bin/activate
 ```
 For Windows:
 ```bash
@@ -54,5 +54,11 @@ python manage.py runserver
 Access the website at `http://127.0.0.1:8000/`
 
 ## Features
-- Multiple-choice questions across various categories.
-- User authentication system for personalized experiences.
+- Basic user login/singup
+- Staff can edit questions using Django forms
+- Admin site for managing users and questions
+- Sessions for remembering quiz state
+- Production and local settings
+- Environs and .env file
+- Uploaded user avatars
+- Django Debug Toolbar configured in development
