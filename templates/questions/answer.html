@@ -1,30 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h3>
+<div class="box p-6 has-text-centered is-align-items-center is-flex-direction-column is-flex">
+    <h3 class="title">
         {{ question.text | safe }}
     </h3>
     {% if question.details %}
-        <pre>{{question.details}}</pre>
+        <pre class="details block has-text-left">{{question.details}}</pre>
     {% endif %}
     {% for choice in question.choices.all %}
     <div>
-        <a>
+        <a class="question button is-rounded is-unclickable {% if choice.is_correct %}is-success{% elif choice == selected_choice %}is-danger{% else %}is-dark is-outlined{% endif %}">
             {{ choice.text | linebreaks }}
         </a>
-        <div>
+        <div class="block mx-6 mt-2 mb-5">
             {{ choice.details|linebreaks }}
         </div>
     </div>
     {% endfor %}
         {% if selected_choice.is_correct %}
-            <div>Correct!</div>
+            <div class="block has-text-success is-size-4 is-bold">Correct!</div>
         {% else %}
-            <div>Incorrect</div>
+            <div class="block has-text-danger is-size-4 is-bold">Incorrect</div>
         {% endif %}
-    <div>
-        <a href="{% url 'questions:question' %}">Next</a>
+    <div class="bottom-row is-flex is-justify-content-flex-end">
+        <a class="button is-link is-pulled-right" href="{% url 'questions:question' %}">Next</a>
     </div>
 </div>
 {% endblock %}

@@ -1,15 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Django Trivia - {% block title %}Home{% endblock %}</title>
+
+          <!-- Include Bulma for styling -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+        <!-- Include Font Awesome for icons -->
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+        <!-- Your custom CSS -->
+        <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">
     </head>
-    <body>
+    <body class="bg-base {% block bodyclass %}{% endblock %}">
         {% block header %}
         {% endblock %}
-        <section>
-            <div>
+        <section class="section main m-3">
+            <div class="content">
                 {% block content %}
                 {% endblock %}
             </div>
