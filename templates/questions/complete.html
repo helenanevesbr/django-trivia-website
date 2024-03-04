@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <h2>Quiz complete</h2>
+  <h3>
+    You got {{ correct }} / {{ total }}
+  </h3>
+  <div>
+      <a href="{% url 'questions:new' %}">Try again?</a>
+  </div>
+</div>
+{% endblock %}

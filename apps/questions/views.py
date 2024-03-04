@@ -40,3 +40,11 @@ def answer_view(request, question_pk, choice_pk):
 
     return render(request, "questions/answer.html", context=context)
 
+
+def complete(request):
+    context = {
+        "correct": request.session.get('correct', 0),
+        "total": request.session.get('total', 0)
+    }
+    return render(request, "questions/complete.html", context=context)
+
