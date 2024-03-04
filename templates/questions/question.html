@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3>
+        {{ question.text}}
+        </a>
+    </h3>
+    {% if question.details %}
+    <pre>{{ question.details }}</pre>
+    {% endif %}
+    {% for choice in question.choices.all %}
+    <div>
+        <a>
+            {{ choice.text | linebreaks }}
+        </a>
+    </div>
+    {% empty %}
+    <div>
+        No choices configured
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

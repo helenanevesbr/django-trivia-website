@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Django Trivia{% endblock %}
+
+{% block content %}
+<h1>
+    Hello {% if user.is_authenticated %}{{ user.get_short_name }}{% else %}World{% endif %}
+</h1>
+<p class="subtitle">
+    Welcome to Django Trivia!
+</p>
+<div>
+    <h2>Test your knowledge of Django</h2>
+        <a href="{% url 'questions:new' %}">Take the quiz!</a>
+</div>
+{% endblock %}
