@@ -8,7 +8,9 @@ from .models import(
 def question_view(request,pk):
     question = get_object_or_404(Question, pk=pk)
     context = {"question": question}
+    request.session['last_question_pk'] = pk
     return render(request, "questions/question.html", context=context)
+
 
 def new_game(request):
     request.session['last_question_pk'] = 0
@@ -16,6 +18,7 @@ def new_game(request):
     request.session['total'] = Question.objects.count()
 
     return redirect('questions:question')
+
 
 def next_question(request):
     last_pk = request.session.get('last_question_pk', 0)
@@ -32,7 +35,6 @@ def answer_view(request, question_pk, choice_pk):
     choice = get_object_or_404(Choice, question=question, pk=choice_pk)
     context = {"question": question, "selected_choice": choice}
 
-    request.session['last_question_pk'] = question.pk
     if choice.is_correct:
         request.session['correct'] += 1
 
