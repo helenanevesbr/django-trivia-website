@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3>
+        {{ question.text | safe }}
+    </h3>
+    {% if question.details %}
+        <pre>{{question.details}}</pre>
+    {% endif %}
+    {% for choice in question.choices.all %}
+    <div>
+        <a>
+            {{ choice.text | linebreaks }}
+        </a>
+        <div>
+            {{ choice.details|linebreaks }}
+        </div>
+    </div>
+    {% endfor %}
+        {% if selected_choice.is_correct %}
+            <div>Correct!</div>
+        {% else %}
+            <div>Incorrect</div>
+        {% endif %}
+</div>
+{% endblock %}

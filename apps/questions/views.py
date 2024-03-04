@@ -25,3 +25,16 @@ def next_question(request):
         return redirect('questions:question', pk=question.pk)
     else:
         return redirect('questions:complete')
+    
+
+def answer_view(request, question_pk, choice_pk):
+    question = get_object_or_404(Question, pk=question_pk)
+    choice = get_object_or_404(Choice, question=question, pk=choice_pk)
+    context = {"question": question, "selected_choice": choice}
+
+    request.session['last_question_pk'] = question.pk
+    if choice.is_correct:
+        request.session['correct'] += 1
+
+    return render(request, "questions/answer.html", context=context)
+
